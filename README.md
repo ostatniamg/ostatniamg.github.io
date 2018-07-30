@@ -1,2 +1,2 @@
 # ostatniamg.github.io/dev
-Merged on release.
+Development branch. Merged on release.
