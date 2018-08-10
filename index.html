@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>III MG | Home</title>
-  <link rel="stylesheet" type="text/css" href="/styles/index.css">
+  <link rel="stylesheet" type="text/css" href="/styles/shell.css">
   <link rel="manifest" href="/manifest.json">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -22,15 +22,34 @@
   <meta name="theme-color" content="#ffffff">
 </head>
 <body>
+  <div class="header">
+    <div class="option"><h3>Jutro</h3></div>
+    <h1>Dzisiaj</h1>
+  </div>
 
-  <header class="header">
-    <h1 class="header_title"></h1>
-    <button id="butBurger"></button>
-  </header>
+  <div class="content">
+    <!-- Content -->
+  </div>
 
-  <main class="main">
-    <div class="content"></div>
-  </main>
+  <div class="nav">
+    <div class="child active">
+      <img src="/media/img/tabbar/today-active.png">
+      <h4>Dzisiaj</h4>
+    </div>
+    <div class="child">
+      <img src="/media/img/tabbar/timetable.png">
+      <h4>Plan Lekcji</h4>
+    </div>
+    <div class="child">
+      <img src="/media/img/tabbar/substitutions.png">
+      <h4>Zastępstwa</h4>
+    </div>
+    <div class="child">
+      <img src="/media/img/tabbar/settings.png">
+      <h4>Ustawienia</h4>
+    </div>
+  </div>
+
   <script src="scripts/app.js" async></script>
 </body>
 </html>
