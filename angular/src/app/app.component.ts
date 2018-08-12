@@ -6,13 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'III MG';
-  Manipulate(sidenav) {
-    if (sidenav.opened) {
-      sidenav.close();
-    }
-    else {
-      sidenav.open();
-    }
-  }
+  title = 'Dzisiaj';
 }

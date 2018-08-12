@@ -1,10 +1,14 @@
-<mat-toolbar color="primary">
-  <button type="button" mat-button (click)="Manipulate(sidenav)">
-    <mat-icon>menu</mat-icon>
-  </button>
-  {{ title }}
-</mat-toolbar> 
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="over" [(opened)]="opened">
   </mat-sidenav>
+
+  <div class="content">
+      <mat-toolbar color="primary">
+          <button type="button" mat-button (click)="sidenav.open()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          {{ title }}
+        </mat-toolbar> 
+  </div>
+
 </mat-sidenav-container>
