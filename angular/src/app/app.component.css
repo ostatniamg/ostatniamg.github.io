@@ -4,11 +4,5 @@
     height: 100%;
 }
 mat-sidenav { 
-    width: 300px; /* <=== delete that after done testing! */
-}
-/*
-#close-button {
-    margin-left: 17px;
-    margin-top: 12px;
-}
-*/
+    width: 300px; /* <=== i can __definitely__ do better than that i just don't have enough time 🤷 */
+}                 /* oh sorry i just assumed you have unicode (charsetsplaining?). Here you go ¯\_(ツ)_/¯ */

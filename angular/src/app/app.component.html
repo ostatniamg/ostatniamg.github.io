@@ -4,11 +4,23 @@
 
   <div class="content">
       <mat-toolbar color="primary">
-          <button type="button" mat-button (click)="sidenav.open()">
+          <button type="button" mat-icon-button (click)="sidenav.open()" style="padding-right: 2em;">
             <mat-icon>menu</mat-icon>
           </button>
           {{ title }}
         </mat-toolbar> 
+        
+        <mat-tab-group mat-stretch-tabs>
+          <mat-tab label="DZISIAJ">
+            <h1>Content 1</h1>
+          </mat-tab>
+          <mat-tab label="JUTRO">
+            <h1>Content 2</h1>
+          </mat-tab>
+        <mat-tab label="ZA 2 DNI">
+          <h1>Content 3</h1>
+        </mat-tab>
+      </mat-tab-group>
   </div>
 
 </mat-sidenav-container>
