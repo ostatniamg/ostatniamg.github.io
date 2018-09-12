@@ -13,7 +13,6 @@ import {
   MatTabsModule, 
   MatListModule 
 } from '@angular/material';
-import { NavComponent } from './nav/nav.component';
 import { MainComponent } from './main/main.component';
 import { PlanComponent } from './plan/plan.component';
 import { SubstitutionsComponent } from './substitutions/substitutions.component';
@@ -29,11 +28,10 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    MainComponent,
     PlanComponent,
     SubstitutionsComponent,
-    SettingsComponent,
-    NavComponent,
-    MainComponent
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
