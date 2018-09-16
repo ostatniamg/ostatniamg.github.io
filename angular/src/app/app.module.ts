@@ -11,12 +11,21 @@ import {
   MatCardModule, 
   MatSidenavModule, 
   MatTabsModule, 
-  MatListModule 
+  MatListModule,
+  MatExpansionModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
+/* import {MatExpansionModule} from '@angular/material/expansion'; */
 import { MainComponent } from './main/main.component';
 import { PlanComponent } from './plan/plan.component';
 import { SubstitutionsComponent } from './substitutions/substitutions.component';
 import { SettingsComponent } from './settings/settings.component';
+
+import { CardActiveComponent } from './card-active/card-active.component';
+import { CardInactiveComponent } from './card-inactive/card-inactive.component';
+import { CardCurrentComponent } from './card-current/card-current.component';
+import { CardCompletedComponent } from './card-completed/card-completed.component';
+import { CardExpandableComponent } from './card-expandable/card-expandable.component';
 const appRoutes: Routes = [
   { path: '', component: MainComponent, data: { title: 'Strona Główna' } },
   { path: 'main', component: MainComponent, data: { title: 'Strona Główna' } },
@@ -31,7 +40,12 @@ const appRoutes: Routes = [
     MainComponent,
     PlanComponent,
     SubstitutionsComponent,
-    SettingsComponent
+    SettingsComponent,
+    CardActiveComponent,
+    CardInactiveComponent,
+    CardCurrentComponent,
+    CardCompletedComponent,
+    CardExpandableComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +58,8 @@ const appRoutes: Routes = [
     MatSidenavModule,
     MatTabsModule,
     MatListModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule,
     RouterModule.forRoot(
       appRoutes,
       { useHash: true }

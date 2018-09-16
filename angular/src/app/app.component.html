@@ -1,21 +1,23 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav mode="over" role="navigation">
     <mat-nav-list>
-      <a mat-list-item routerLink='/main' (click)="sidenav.close(); title = 'Strona główna'">Strona główna</a>
-      <a mat-list-item routerLink='/plan' (click)="sidenav.close(); title = 'Plan lekcji'">Plan lekcji</a>
-      <a mat-list-item routerLink='/substitutions' (click)="sidenav.close(); title = 'Zastępstwa'">Zastępstwa</a>
-      <a mat-list-item routerLink='/settings' (click)="sidenav.close(); title = 'Ustawienia'">Ustawienia</a>
+      <a mat-list-item routerLink='/main' aria-label="Go to the main page" (click)="sidenav.close(); title = 'Strona główna'">Strona główna</a>
+      <a mat-list-item routerLink='/plan' aria-label="Go to the schedule" (click)="sidenav.close(); title = 'Plan lekcji'">Plan lekcji</a>
+      <a mat-list-item routerLink='/substitutions' aria-label="Go to substitutions" (click)="sidenav.close(); title = 'Zastępstwa'">Zastępstwa</a>
+      <a mat-list-item routerLink='/settings' aria-label="Go to settings" (click)="sidenav.close(); title = 'Ustawienia'">Ustawienia</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-      <mat-toolbar>
-        <mat-toolbar-row>
-          <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="sidenav.toggle()">
-            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-          </button>
-          <h1>{{ title }}</h1>
-        </mat-toolbar-row>
-      </mat-toolbar>
-    <router-outlet></router-outlet>
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <h1 id="toolbar-title">{{ title }}</h1>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="outlet">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

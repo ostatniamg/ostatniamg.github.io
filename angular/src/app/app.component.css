@@ -4,8 +4,16 @@ mat-sidenav-container {
   height: 100%;
 }
 mat-sidenav { 
-  width: 300px;
+  width: 250px;
 }
-h1 {
+#toolbar-title {
   margin-left: 1em;
+}
+mat-toolbar {
+  position: fixed;
+  z-index: 2;
+  height: 64px;
+}
+.outlet {
+  margin-top: 64px;
 }
