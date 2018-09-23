@@ -15,7 +15,6 @@ import {
   MatExpansionModule,
   MatProgressSpinnerModule
 } from '@angular/material';
-/* import {MatExpansionModule} from '@angular/material/expansion'; */
 import { MainComponent } from './main/main.component';
 import { PlanComponent } from './plan/plan.component';
 import { SubstitutionsComponent } from './substitutions/substitutions.component';
@@ -26,6 +25,7 @@ import { CardInactiveComponent } from './card-inactive/card-inactive.component';
 import { CardCurrentComponent } from './card-current/card-current.component';
 import { CardCompletedComponent } from './card-completed/card-completed.component';
 import { CardExpandableComponent } from './card-expandable/card-expandable.component';
+
 const appRoutes: Routes = [
   { path: '', component: MainComponent, data: { title: 'Strona Główna' } },
   { path: 'main', component: MainComponent, data: { title: 'Strona Główna' } },
