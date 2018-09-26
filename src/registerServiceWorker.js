@@ -50,6 +50,11 @@ export default function register() {
       }
     });
   }
+  else {
+    console.log(
+      'Service worker not found'
+    );
+  }
 }
 
 function registerValidSW(swUrl) {
