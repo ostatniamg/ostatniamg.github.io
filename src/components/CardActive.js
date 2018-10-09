@@ -9,7 +9,7 @@ const styles = {
   card: {
     margin: 10,
   },
-  subheading: {
+  subtitle: {
     marginTop: 6,
   },
 };
@@ -20,13 +20,13 @@ let CardActive = (props) => {
   return (
     <Card className={classes.card}>
       <CardContent>
-        <Typography variant="headline">
+        <Typography variant="h5">
           { props.title }
         </Typography>
-        <Typography variant="subheading" className={classes.subheading}>
+        <Typography variant="subtitle1" className={classes.subtitle}>
           <span role="img" aria-label="Teacher">👩‍🏫</span> { props.teacher }
         </Typography>
-        <Typography variant="subheading" className={classes.subheading}>
+        <Typography variant="subtitle1" className={classes.subtitle}>
           <span role="img" aria-label="Room">🚪</span> { props.room }
         </Typography>
       </CardContent>

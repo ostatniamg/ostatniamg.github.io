@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
 import CardActive from './components/CardActive';
-import CardInactive from './components/CardInactive';
 import CardProgress from './components/CardProgress';
+import CardInactive from './components/CardInactive';
+import CardExpandable from './components/CardExpandable';
+
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -29,7 +31,7 @@ class App extends Component {
             <IconButton color="inherit" aria-label="Menu">
               <Icon>menu</Icon>
             </IconButton>
-            <Typography variant="title" color="inherit" className={this.props.classes.title} >
+            <Typography variant="h6" color="inherit" className={this.props.classes.title} >
               Strona główna
             </Typography>
           </Toolbar>
@@ -42,18 +44,31 @@ class App extends Component {
             room="Room"
           ></CardActive>
 
+          <CardProgress
+          title="CardProgress"
+          teacher="Teacher"
+          room="Room"
+          value={75}
+          ></CardProgress>
+
           <CardInactive
             title="CardInactive"
             teacher="Teacher"
             room="Room"
           ></CardInactive>
 
-          <CardProgress
-            title="CardProgress"
-            teacher="Teacher"
-            room="Room"
-            value={75}
-          ></CardProgress>
+          <CardExpandable
+            title="CardExpandable"
+            content={
+              <div>
+              <CardActive
+                title="Nested CardActive"
+                teacher="Teacher"
+                room="Room"
+              ></CardActive>
+              </div>
+            }
+          ></CardExpandable>
 
         </div>
       </div>
