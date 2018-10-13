@@ -1,79 +1,80 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
-import CardActive from './components/CardActive';
-import CardProgress from './components/CardProgress';
-import CardInactive from './components/CardInactive';
+import UINav from './components/UINav';
+import CardDefault from './components/CardDefault';
 import CardExpandable from './components/CardExpandable';
 
-
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import Icon from '@material-ui/core/Icon';
 
 const styles = {
-  title: {
-    marginLeft: 16, /* 1em */
-  },
   content: {
     margin: 20,
   },
 };
 
 class App extends Component {
+  content = {
+    Today: (
+      <CardDefault
+        title="CardDefault"
+        teacher="Teacher"
+        room="Room"
+      ></CardDefault>
+    ),
+    Tomorrow: (
+      <CardExpandable
+        title="CardExpandable"
+        content={
+          <div>
+            <CardDefault
+              title="CardDefault"
+              teacher="Teacher"
+              room="Room"
+            ></CardDefault>
+            <CardDefault
+              title="CardDefault"
+              teacher="Teacher"
+              room="Room"
+              value={50}
+            ></CardDefault>
+            <CardDefault
+              title="CardDefault"
+              teacher="Teacher"
+              room="Room"
+              inactive
+            ></CardDefault>
+          </div>
+        }
+      ></CardExpandable>
+    ),
+    In2Days: (
+      <div></div>
+    ),
+  };
+
   render() {
+    const { classes } = this.props;
+
     return (
       <div className="App">
-        <AppBar position="sticky">
-          <Toolbar>
-            <IconButton color="inherit" aria-label="Menu">
-              <Icon>menu</Icon>
-            </IconButton>
-            <Typography variant="h6" color="inherit" className={this.props.classes.title} >
-              Strona główna
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <div className={this.props.classes.content}>
-
-          <CardActive
-            title="CardActive"
-            teacher="Teacher"
-            room="Room"
-          ></CardActive>
-
-          <CardProgress
-          title="CardProgress"
-          teacher="Teacher"
-          room="Room"
-          value={75}
-          ></CardProgress>
-
-          <CardInactive
-            title="CardInactive"
-            teacher="Teacher"
-            room="Room"
-          ></CardInactive>
-
-          <CardExpandable
-            title="CardExpandable"
-            content={
-              <div>
-              <CardActive
-                title="Nested CardActive"
-                teacher="Teacher"
-                room="Room"
-              ></CardActive>
-              </div>
-            }
-          ></CardExpandable>
-
+        <UINav></UINav>
+        <div className={classes.content}>
+          <Typography variant="h4" gutterBottom>Today</Typography>
+          { this.content.Today }
+          <Typography variant="h4" gutterBottom>Tomorrow</Typography>
+          { this.content.Tomorrow }
+          <Typography variant="h4" gutterBottom>In 2 days</Typography>
+          { this.content.In2Days }
         </div>
       </div>
     );
   }
 }
+
+App.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 export default withStyles(styles)(App);

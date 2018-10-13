@@ -12,6 +12,9 @@ const styles = {
   card: {
     margin: 10,
   },
+  content: {
+    width: '100%',
+  },
 };
 
 let CardExpandable = (props) => {
@@ -26,7 +29,9 @@ let CardExpandable = (props) => {
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          { props.content }
+          <div className={classes.content}>
+            { props.content }
+          </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
       </Card>

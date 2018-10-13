@@ -52,7 +52,7 @@ export default function register() {
   }
   else {
     console.log(
-      'Service worker not found'
+      'Service Worker not installed - You\'re in development mode'
     );
   }
 }
