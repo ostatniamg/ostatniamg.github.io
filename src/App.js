@@ -1,101 +1,87 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import Content from './Content';
+import {
+  Typography,
+  AppBar,
+  Toolbar,
+  Drawer,
+  MenuList, 
+  MenuItem,
+  IconButton
+} from '@material-ui/core';
 
-import Typography from '@material-ui/core/Typography';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import {
+  Menu 
+} from '@material-ui/icons';
 
-import Drawer from '@material-ui/core/Drawer';
-
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
+import CardDefault from './components/CardDefault';
+import CardExpandable from './components/CardExpandable';
 
 const styles = {
-  content: {
-    margin: 20,
-  },
 };
 
 class App extends Component {
-  state = {
-    open: false,
-  };
 
-  toggleDrawer = (value) => () => {
+  state = { 
+    active: false,
+  };
+  drawerItems = (
+    <MenuList>
+        <MenuItem>Strona główna</MenuItem>
+        <MenuItem>Plan</MenuItem>
+        <MenuItem>Zastępstwa</MenuItem>
+        <MenuItem>Ustawienia</MenuItem>
+      </MenuList>
+  );
+  drawerToggle = (open) => () => {
     this.setState({
-      open: value,
+      active: open,
     });
   };
-  
+
   render() {
     const { classes } = this.props;
-    const sideList = (
-      <div>
-        <List>
-          <ListItem button onClick={() => { this.content.switchTo('main') }}>
-            <ListItemIcon>
-              <Icon>home</Icon>
-            </ListItemIcon>
-            <ListItemText primary="Strona głowna"/>
-          </ListItem>
-          <ListItem button onClick={() => { this.content.switchTo('plan') }}>
-            <ListItemIcon>
-              <Icon>calendar_today</Icon>
-            </ListItemIcon>
-            <ListItemText primary="Plan Lekcji"/>
-          </ListItem>
-          <ListItem button onClick={() => { this.content.switchTo('substitutions') }}>
-            <ListItemIcon>
-              <Icon>list</Icon>
-            </ListItemIcon>
-            <ListItemText primary="Zastępstwa"/>
-          </ListItem>
-          <ListItem button onClick={() => { this.content.switchTo('settings') }}>
-            <ListItemIcon>
-              <Icon>settings</Icon>
-            </ListItemIcon>
-            <ListItemText primary="Ustawienia"/>
-          </ListItem>
-        </List>
-      </div>
-    );
+    const title = "Strona główna";
+
     return (
       <div className="App">
-        <div className={classes.nav}>
-          <AppBar position="sticky">
-            <Toolbar>
-              <IconButton color="inherit" aria-label="Menu" onClick={this.toggleDrawer(true)}>
-                <Icon>menu</Icon>
-              </IconButton>
-              <Typography variant="h6" color="inherit" className={this.props.classes.title} >
-                Strona główna
-              </Typography>
-            </Toolbar>
-          </AppBar>
 
-          <Drawer open={this.state.open} onClose={this.toggleDrawer(false)}>
-            <div
-              tabIndex={0}
-              role="button"
-              onClick={this.toggleDrawer(false)}
-              onKeyDown={this.toggleDrawer(false)}
-            >
-              {sideList}
-            </div>
-          </Drawer>
-        </div>
+        <AppBar position="sticky">
+          <Toolbar>
+            <IconButton onClick={this.drawerToggle(true)} color="inherit" aria-label="Menu">
+              <Menu />
+            </IconButton>
+            <Typography variant="h6" color="inherit">{ title }</Typography>
+          </Toolbar>
+        </AppBar>
 
-        <div className={classes.content}>
-          <Content ref={instance => { this.content = instance }}></Content>
-        </div>
+        <Drawer open={this.state.active} onClose={this.drawerToggle(false)}>
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.drawerToggle(false)}
+            onKeyDown={this.drawerToggle(false)}
+          >
+          { this.drawerItems }
+          </div>
+        </Drawer>
+
+        <CardDefault
+          title="CardExpandable"
+          teacher="Teacher"
+          room="Room"
+          inactive
+        />
+        <CardExpandable
+          title="CardExpandable"
+          content = {
+            <div>Works!</div>
+          }
+        />
       </div>
     );
   };

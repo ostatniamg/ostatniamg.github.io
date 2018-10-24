@@ -1,12 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Icon from '@material-ui/core/Icon';
-import CircularProgress from '@material-ui/core/CircularProgress';
+
+import PropTypes from 'prop-types';
+
+import {
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  CircularProgress,
+} from '@material-ui/core';
+
+import { DoneOutline } from '@material-ui/icons';
 
 const styles = {
   card: {
@@ -18,12 +23,12 @@ const styles = {
 };
 
 let sideContent = (props) => {
-  if ( props.inactive ) { return ( <Icon>done_outline</Icon> ); }
-  else if ( props.value ) {
+  if ( props.inactive ) { return ( <DoneOutline /> ); }
+  else if ( props.progress ) {
     return (
       <CircularProgress 
         variant="static" 
-        value={ props.value } 
+        value={ props.progress } 
       />
     );
   }
