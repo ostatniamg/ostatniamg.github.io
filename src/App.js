@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Link, Route } from 'react-router-dom';
 
 import {
   Typography,
@@ -18,10 +18,17 @@ import {
   Menu 
 } from '@material-ui/icons';
 
-import CardDefault from './components/CardDefault';
-import CardExpandable from './components/CardExpandable';
+import {
+  Home,
+  Plan,
+  Substitutions,
+  Settings
+} from './content';
 
 const styles = {
+  content: {
+    margin: 20,
+  },
 };
 
 class App extends Component {
@@ -31,10 +38,10 @@ class App extends Component {
   };
   drawerItems = (
     <MenuList>
-        <MenuItem>Strona główna</MenuItem>
-        <MenuItem>Plan</MenuItem>
-        <MenuItem>Zastępstwa</MenuItem>
-        <MenuItem>Ustawienia</MenuItem>
+        <MenuItem component={Link} to='/'>Strona główna</MenuItem>
+        <MenuItem component={Link} to='/Plan'>Plan</MenuItem>
+        <MenuItem component={Link} to='/Substitutions'>Zastępstwa</MenuItem>
+        <MenuItem component={Link} to='/Settings'>Ustawienia</MenuItem>
       </MenuList>
   );
   drawerToggle = (open) => () => {
@@ -48,41 +55,37 @@ class App extends Component {
     const title = "Strona główna";
 
     return (
-      <div className="App">
+      <BrowserRouter>
+        <Fragment>
 
-        <AppBar position="sticky">
-          <Toolbar>
-            <IconButton onClick={this.drawerToggle(true)} color="inherit" aria-label="Menu">
-              <Menu />
-            </IconButton>
-            <Typography variant="h6" color="inherit">{ title }</Typography>
-          </Toolbar>
-        </AppBar>
+          <AppBar position="sticky">
+            <Toolbar>
+              <IconButton onClick={this.drawerToggle(true)} color="inherit" aria-label="Menu">
+                <Menu />
+              </IconButton>
+              <Typography variant="h6" color="inherit">{ title }</Typography>
+            </Toolbar>
+          </AppBar>
 
-        <Drawer open={this.state.active} onClose={this.drawerToggle(false)}>
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={this.drawerToggle(false)}
-            onKeyDown={this.drawerToggle(false)}
-          >
-          { this.drawerItems }
+          <Drawer open={this.state.active} onClose={this.drawerToggle(false)}>
+            <div
+              tabIndex={0}
+              role="button"
+              onClick={this.drawerToggle(false)}
+              onKeyDown={this.drawerToggle(false)}
+            >
+            { this.drawerItems }
+            </div>
+          </Drawer>
+
+          <div className={ classes.content }>
+            <Route exact path='/' component={ Home } />
+            <Route path='/Plan' component={ Plan } />
+            <Route path='/Substitutions' component={ Substitutions } />
+            <Route path='/Settings' component={ Settings } />
           </div>
-        </Drawer>
-
-        <CardDefault
-          title="CardExpandable"
-          teacher="Teacher"
-          room="Room"
-          inactive
-        />
-        <CardExpandable
-          title="CardExpandable"
-          content = {
-            <div>Works!</div>
-          }
-        />
-      </div>
+        </Fragment>
+      </BrowserRouter>
     );
   };
 };
